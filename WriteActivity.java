@@ -73,6 +73,6 @@ public class WriteActivity extends AppCompatActivity {
                 gender = "Female";
         }
         String division = ((Spinner) findViewById(R.id.spinner)).getSelectedItem().toString();
-        return snum+","+fname+","+lname+","+gender+","+division+"\n";
+        return snum+","+lname+","+fname+","+gender+","+division+"\n";
     }
 }
