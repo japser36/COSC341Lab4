@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,14 +18,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void readData(View view) {
-        File f = new File("@string/dataFile");
-        Intent i = null;
-        if (f.exists() && !f.isDirectory()) {
-            i = new Intent(this, ReadActivity.class);
-        } else {
-            Toast.makeText(getApplicationContext(), "@string/writeFirst", Toast.LENGTH_SHORT).show();
+        try {
+            FileInputStream f = openFileInput(getResources().getString(R.string.dataFile));
+            Intent i;
+            if (f != null) {
+                f.close();
+                i = new Intent(this, ReadActivity.class);
+                startActivity(i);
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.writeFirst), Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        startActivity(i);
     }
 
     public void writeData(View view) {

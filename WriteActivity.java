@@ -37,28 +37,28 @@ public class WriteActivity extends AppCompatActivity {
             outputStream.close();
             finish();
         } catch(Exception e) {
-            Toast.makeText(getApplicationContext(), "@string/write_error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.write_error), Toast.LENGTH_SHORT).show();
         }
     }
 
     private String getData() {
         String snum = ((EditText) findViewById(R.id.editText)).getText().toString();
         if (snum.length() != 8) {
-            Toast.makeText(getApplicationContext(), "@string/snum_error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.snum_error), Toast.LENGTH_SHORT).show();
             return "";
         }
         String fname = ((EditText) findViewById(R.id.editText3)).getText().toString();
         String lname = ((EditText) findViewById(R.id.editText2)).getText().toString();
         if (lname.equals("") && fname.equals("")) {
-            Toast.makeText(getApplicationContext(), "@string/name_error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.name_error), Toast.LENGTH_SHORT).show();
             return "";
         }
         if (fname.equals("")) {
-            Toast.makeText(getApplicationContext(), "@string/fname_error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.fname_error), Toast.LENGTH_SHORT).show();
             return "";
         }
         if (lname.equals("")) {
-            Toast.makeText(getApplicationContext(), "@string/lname_error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.lname_error), Toast.LENGTH_SHORT).show();
             return "";
         }
         String gender = "Other";
